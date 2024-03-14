@@ -20,17 +20,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($ideas as $idea )
-                    <tr>
-                        <td>{{ $idea->id }}</td>
-                        <td>{{ $idea->user->name }}</td>
-                        <td>{{ $idea->content }}</td>
-                        <td>{{ $idea->created_at->toDateString() }}</td>
-                        <td>
-                            <a href="{{ route('ideas.show', $idea) }}">View</a>
-                            <a href="{{ route('ideas.edit', $idea) }}">Edit</a>
-                        </td>
-                    </tr>
+                    @foreach ($ideas as $idea)
+                        <tr>
+                            <td>{{ $idea->id }}</td>
+                            <td>
+                                <a href="{{ route('users.show', $idea->user) }}">
+                                    {{ $idea->user->name }}
+                                </a>
+                            </td>
+                            <td>{{ $idea->content }}</td>
+                            <td>{{ $idea->created_at->toDateString() }}</td>
+                            <td>
+                                <a href="{{ route('ideas.show', $idea) }}">View</a>
+                                <a href="{{ route('ideas.edit', $idea) }}">Edit</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
